@@ -140,10 +140,15 @@ public:
             }
 
             //TODO: Fix this
-            std::this_thread::sleep_for(std::chrono::milliseconds(400));
+            std::this_thread::sleep_for(std::chrono::milliseconds(250));
 
             for (auto &v : vLines) {
                 iLinesCleared++;
+                if (iLinesCleared % 10 == 0) {
+                    if (iLevel + 1 <= 90) {
+                        iLevel++;
+                    }
+                }
                 for (int px = 1; px < iFieldWidth - 1; px++) {
                     for (int py = v; py > 0; py--) {
                         pField[py * iFieldWidth + px] = pField[(py - 1) * iFieldWidth + px];
