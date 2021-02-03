@@ -1,0 +1,1 @@
+/usr/bin/g++  -g   CMakeFiles/pget.dir/main.cpp.o  -o pget  -lX11 -lGL -lpthread -lpng -lstdc++fs 

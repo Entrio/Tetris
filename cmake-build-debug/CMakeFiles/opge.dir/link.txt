@@ -1,0 +1,1 @@
+/usr/bin/g++  -g   CMakeFiles/opge.dir/main.cpp.o  -o opge 
