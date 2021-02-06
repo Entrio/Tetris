@@ -35,6 +35,9 @@ class Tetris : public olc::PixelGameEngine {
     int iLinesCleared = 0;
     int iLevel = 1;
 
+    float tickRate = 1.0f / 30;
+    float fcurrentTicks = 0.0f;
+
     std::vector<int> vLines;
 
 public:
@@ -97,6 +100,14 @@ public:
 
     bool OnUserUpdate(float fElapsedTime) override {
         Clear(olc::BLACK);
+
+        fcurrentTicks += fElapsedTime;
+
+        if (fcurrentTicks >= tickRate) {
+            // This is an update
+            FixedUpdate();
+            fcurrentTicks = 0.0f;
+        }
 
         //std::this_thread::sleep_for(std::chrono::milliseconds(50));
         iSpeedCounter++;
@@ -169,6 +180,13 @@ public:
 
 private:
     bool isGameOver = false;
+
+    /**
+     * Perform game logic here
+     */
+    void FixedUpdate() {
+
+    }
 
     bool DrawField(float fElapsedTime) {
         for (int x = 0; x < iFieldWidth; x++) {
